@@ -10,13 +10,29 @@
 */
 
 document.getElementById("btn-withdraw").addEventListener("click", function () {
+
   const newWithdrawAmount = getInputFieldValueById("withdraw-field");
-  console.log(newWithdrawAmount)
-  const previousWithdrawTotal = Number(getTextElementValueById("withdraw-total"));
-  console.log(previousWithdrawTotal)
-  const newWithdrawTotal = previousWithdrawTotal + newWithdrawAmount;
-  setTextElementValueById("withdraw-total", newWithdrawTotal);
-  const previousBalanceTotal = getTextElementValueById("balance-total");
-  const newBalanceTotal = previousBalanceTotal - newWithdrawAmount;
-  setTextElementValueById("balance-total", newBalanceTotal);
+
+  if(newWithdrawAmount > 0){
+    const previousWithdrawTotal = Number(getTextElementValueById("withdraw-total"));
+
+    const previousBalanceTotal = getTextElementValueById("balance-total");
+    if(previousBalanceTotal < newWithdrawAmount){
+
+      alert("🟥🟧 Your 🟥🟨🟡🟢🟢Banlance🟠🔴 is ⚫◼◻◾◽ low▪▪▫")
+         
+    }
+   else{
+          const newWithdrawTotal = previousWithdrawTotal + newWithdrawAmount;
+          setTextElementValueById("withdraw-total", newWithdrawTotal);
+          const newBalanceTotal = previousBalanceTotal - newWithdrawAmount;
+          setTextElementValueById("balance-total", newBalanceTotal); 
+   }
+                           
+  }
+  else{
+    alert("☢☢💥☢☣⚠ Please give valid amount!!☢☢☢☣⚠💥");
+  }
+
+  
 });

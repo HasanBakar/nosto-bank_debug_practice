@@ -7,8 +7,8 @@ document.getElementById("btn-deposit").addEventListener("click", function () {
     */
   
   const newDepositAmount = getInputFieldValueById("deposit-field");
-  
-  /* 
+  if(newDepositAmount > 0){
+     /* 
     1. get previous deposit total by id
 
     */
@@ -25,5 +25,12 @@ document.getElementById("btn-deposit").addEventListener("click", function () {
   
   const newBalanceTotal = previousBalanceTotal + newDepositAmount;
   setTextElementValueById("balance-total", newBalanceTotal);
+
+  }
+  else{
+    alert("Please give valid amount!");
+  }
+  
+ 
 }
 );
